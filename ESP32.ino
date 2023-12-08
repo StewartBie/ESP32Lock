@@ -39,11 +39,11 @@ U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);//1.
 //U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);//0.96寸oled屏幕参数(SSD1306)
 /*******************************************************************/
 /************************连接的WIFI和密码*****************************/
-char auth[] = "26905d0965d5";//你的密钥blink
-char ssid[] = "CQUPT-3G"; //要接入的WIFI名
-char pswd[] = "1580450330"; //接入的密码
+char auth[] = "";//你的密钥blink,if you use 
+char ssid[] = "yourwifi"; //要接入的WIFI名
+char pswd[] = "yourpassword"; //接入的密码
 /************************发出的WIFI和密码*****************************/
-const char* AP_ssid = "ESP-415G"; //要创建的热点名，不要过长
+const char* AP_ssid = "esp's wifi"; //要创建的热点名，不要过长
 const char* AP_password = "password"; //创建的热点密码
 /************************存放oled汉字取模数据*********************************/
 /*******取16X16汉字字模 逐行式 顺向高位在前 阴码，逐行，逆向，16进制，C51格式******/
@@ -871,7 +871,7 @@ void handleNotFound() {
 void door() {
   digitalWrite(5, HIGH);//接通继电器
   delay(500);
-
+//请依据需求修改参数，例如for(**;i<80;**)
   for (int i = 0; i < 280; i++) { //拉门，产生PWM，括号中280为持续时间，大约为2.94秒（(10ms+0.5ms*280)=2940ms），让舵机顺时针转   280数值可根据自己门以及舵机力量（扭矩(kg/cm)），给舵机的电压等调整，比如电压低就需要久一点，舵机堵转转矩小也需要久一点，下面同理
     digitalWrite(23, HIGH);
     delayMicroseconds(500);//500逆时针，2500顺时针（360度舵机）
